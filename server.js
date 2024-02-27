@@ -43,7 +43,12 @@ app.get("/api/datos/:codigo", (req, res) => {
 app.post("/api/datos", (req, res) => {
   try {
     const filePath = path.resolve(__dirname, "datos.json");
-    fs.writeFileSync(filePath, JSON.stringify(req.body));
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    if (!data.regalos) {
+      data.regalos = [];
+    }
+    data.regalos.push(nuevoRegistro);
+    fs.writeFileSync(filePath, JSON.stringify(data));
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
     console.log(error);
