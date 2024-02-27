@@ -1,0 +1,22 @@
+{
+  "regalos": [
+    {
+      "nombre": "awdawd",
+      "email": "awewaw@gmail.com",
+      "codigoUnico": "416404",
+      "status": "no canjeado"
+    },
+    {
+      "nombre": "Jose martines",
+      "email": "josepedrosuarez@gmail.com",
+      "codigoUnico": "211747",
+      "status": "no canjeado"
+    },
+    {
+      "nombre": "pruebapage1",
+      "email": "prueba@gmail.com",
+      "codigoUnico": "828410",
+      "status": "no canjeado"
+    }
+  ]
+}
