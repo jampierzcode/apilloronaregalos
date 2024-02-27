@@ -28,7 +28,7 @@ app.get("/api/datos/:codigo", (req, res) => {
     if (registro) {
       res.json(registro);
     } else {
-      res.status(404).json({ error: "Registro no encontrado" });
+      res.status(404).json({ msg: "Registro no encontrado" });
     }
   } catch (error) {
     res.status(500).json({ error: "Error al leer los datos" });
