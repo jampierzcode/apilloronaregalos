@@ -1,6 +1,7 @@
 // server.js
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -10,7 +11,8 @@ app.use(express.json());
 // Ruta para leer los datos del archivo JSON
 app.get("/api/datos", (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync("datos.json", "utf8"));
+    const filePath = path.resolve(__dirname, "datos.json");
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: "Error al leer los datos" });
