@@ -42,12 +42,13 @@ app.get("/api/datos/:codigo", (req, res) => {
 // Ruta para sobreescribir el archivo JSON
 app.post("/api/datos", (req, res) => {
   try {
+    const dato = JSON.parse(req.body);
     const filePath = path.resolve(__dirname, "datos.json");
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     if (!data.regalos) {
       data.regalos = [];
     }
-    data.regalos.push(req.body);
+    data.regalos.push(dato);
     fs.writeFileSync(filePath, JSON.stringify(data));
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
