@@ -1,10 +1,14 @@
 // server.js
 const express = require("express");
+const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 
 const app = express();
+
 const PORT = process.env.PORT || 8080;
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -36,7 +40,7 @@ app.get("/api/datos/:codigo", (req, res) => {
 });
 
 // Ruta para sobreescribir el archivo JSON
-app.put("/api/datos", (req, res) => {
+app.post("/api/datos", (req, res) => {
   try {
     const filePath = path.resolve(__dirname, "datos.json");
     fs.writeFileSync(filePath, req.body);
