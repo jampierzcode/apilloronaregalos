@@ -52,7 +52,7 @@ app.post("/api/datos", (req, res) => {
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error al actualizar los datos" });
+    res.status(500).json({ error: error });
   }
 });
 
