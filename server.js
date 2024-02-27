@@ -47,7 +47,7 @@ app.post("/api/datos", (req, res) => {
     if (!data.regalos) {
       data.regalos = [];
     }
-    data.regalos.push(nuevoRegistro);
+    data.regalos.push(req.body);
     fs.writeFileSync(filePath, JSON.stringify(data));
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
