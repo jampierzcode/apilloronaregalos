@@ -51,8 +51,9 @@ app.post("/api/datos", (req, res) => {
     fs.writeFileSync(filePath, JSON.stringify(data));
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error });
+    res
+      .status(500)
+      .json({ error: "No se actualizaron los datos correctamente" });
   }
 });
 
