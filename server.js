@@ -22,7 +22,8 @@ app.get("/api/datos", (req, res) => {
 app.get("/api/datos/:codigo", (req, res) => {
   try {
     const codigo = req.params.codigo;
-    const data = JSON.parse(fs.readFileSync("datos.json", "utf8"));
+    const filePath = path.resolve(__dirname, "datos.json");
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const registro = data.regalos.find((reg) => reg.codigoUnico === codigo);
     if (registro) {
       res.json(registro);
@@ -37,7 +38,8 @@ app.get("/api/datos/:codigo", (req, res) => {
 // Ruta para sobreescribir el archivo JSON
 app.put("/api/datos", (req, res) => {
   try {
-    fs.writeFileSync("datos.json", JSON.stringify(req.body));
+    const filePath = path.resolve(__dirname, "datos.json");
+    fs.writeFileSync(filePath, JSON.stringify(req.body));
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
     res.status(500).json({ error: "Error al actualizar los datos" });
