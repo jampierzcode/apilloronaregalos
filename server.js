@@ -39,7 +39,7 @@ app.get("/api/datos/:codigo", (req, res) => {
 app.put("/api/datos", (req, res) => {
   try {
     const filePath = path.resolve(__dirname, "datos.json");
-    fs.writeFileSync(filePath, JSON.stringify(req.body));
+    fs.writeFileSync(filePath, req.body);
     res.json({ message: "Datos actualizados correctamente" });
   } catch (error) {
     res.status(500).json({ error: "Error al actualizar los datos" });
